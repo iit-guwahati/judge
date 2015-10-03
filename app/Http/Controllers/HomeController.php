@@ -36,7 +36,9 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['email'=> 'required|email', 'password'=>'required', 'name'=>'required']);
+        $user = new User($request->all());
+        $user->save();
     }
 
     /**
